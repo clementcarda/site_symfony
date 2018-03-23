@@ -1,3 +1,7 @@
+job_board:
+    resource: "@JobBoardBundle/Resources/config/routing.yml"
+    prefix:   /job_board
+
 app:
     resource: '@AppBundle/Resources/config/routing.yml'
 

@@ -1,0 +1,9 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+    {% for advert in adverts %}
+        <p>
+        {{ advert.creationDate|date('d-m-Y') }} : {{ advert.title }} by {{ advert.autor.username }}
+        </p>
+    {% endfor %}
+{% endblock %}

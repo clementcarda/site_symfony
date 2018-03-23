@@ -18,11 +18,48 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var \JobBoardBundle\Entity\Advert
+     *
+     * @ORM\OneToMany(targetEntity="JobBoardBundle\Entity\Advert", mappedBy="autor", cascade={"remove", "persist"})
+     */
+    private $adverts;
+
+    /**
      * get id
      *
      *@return integer
      */
     public function getId(){
         return $this->id;
+    }
+
+    /**
+     * get adverts
+     *
+     * @return \JobBoardBundle\Entity\Advert
+     */
+    public function getAdverts(){
+        return $this->adverts;
+    }
+
+    /**
+     * add advert
+     *
+     * @param \JobBoardBundle\Entity\Advert $advert
+     *
+     * @return User
+     */
+    public function addAdvert(\JobBoardBundle\Entity\Advert $advert){
+        $this->adverts[] = $advert;
+        return $this;
+    }
+
+    /**
+     * remove advert
+     *
+     * @param \JobBoardBundle\Entity\Advert
+     */
+    public function removeAdvert(\JobBoardBundle\Entity\Advert $advert){
+        $this->adverts->removeElement($advert);
     }
 }

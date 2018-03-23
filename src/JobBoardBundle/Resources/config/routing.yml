@@ -1,0 +1,7 @@
+job_board_index:
+    path:     /
+    defaults: { _controller: JobBoardBundle:Default:index }
+
+job_board_create:
+    path:     /new
+    defaults: { _controller: JobBoardBundle:Default:Create }

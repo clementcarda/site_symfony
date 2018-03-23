@@ -28,6 +28,7 @@ class AppKernel extends Kernel
 
             // And finally
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new JobBoardBundle\JobBoardBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
