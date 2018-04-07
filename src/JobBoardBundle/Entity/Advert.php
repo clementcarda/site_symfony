@@ -57,6 +57,14 @@ class Advert
      */
     private $keyWords;
 
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="applying")
+     * @ORM\JoinTable(name="user_applying")
+     */
+    private $applyers;
+
 
     /**
      * Get id
@@ -176,24 +184,15 @@ class Advert
     }
 
     /**
-     * Add keyWord
+     * Set keyWord
      *
-     * @param string $keyWord
+     * @param array $keyWord
      *
      * @return Advert
      */
     public function addKeyWord($keyWord){
-        $this->keyWords[] = $keyWord;
+        $this->keyWords = $keyWord;
         return $this;
-    }
-
-    /**
-     * Remove keyWord
-     *
-     * @param string $keyWord
-     */
-    public function removeKeyWord($keyWord){
-        $this->keyWords->removeElement($keyWord);
     }
 
     /**
@@ -204,6 +203,36 @@ class Advert
     public function getKeyWords()
     {
         return $this->keyWords;
+    }
+
+    /**
+     * Get applyers
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getApplyers(){
+        return $this->applyers;
+    }
+
+    /**
+     * Add applyer
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Advert
+     */
+    public function addApplyer(\AppBundle\Entity\User $user){
+        $this->applyers[] = $user;
+        return $this;
+    }
+
+    /**
+     * Remove applyer
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeApllyer(\AppBundle\Entity\User $user){
+        $this->applyers->removeElements($user);
     }
 }
 

@@ -25,6 +25,13 @@ class User extends BaseUser
     private $adverts;
 
     /**
+     * @var \JobBoardBundle\Entity\Advert
+     *
+     * @ORM\ManyToMany(targetEntity="JobBoardBundle\Entity\Advert", mappedBy="applyers")
+     */
+    private $applying;
+
+    /**
      * get id
      *
      *@return integer
@@ -61,5 +68,35 @@ class User extends BaseUser
      */
     public function removeAdvert(\JobBoardBundle\Entity\Advert $advert){
         $this->adverts->removeElement($advert);
+    }
+
+    /**
+     * Get applying
+     *
+     * @return \JobBoardBundle\Entity\Advert
+     */
+    public function getApplying(){
+        return $this->applying;
+    }
+
+    /**
+     * Add apply
+     *
+     * @param \JobBoardBundle\Entity\Advert
+     *
+     * @return User
+     */
+    public function addApply(\JobBoardBundle\Entity\Advert $advert){
+        $this->applying[] = $advert;
+        return $this;
+    }
+
+    /**
+     * Remove apply
+     *
+     * @param \JobBoardBundle\Entity\Advert
+     */
+    public function removeApply(\JobBoardBundle\Entity\Advert $advert){
+        $this->applying->removeElement($advert);
     }
 }

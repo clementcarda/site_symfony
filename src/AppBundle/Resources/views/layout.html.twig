@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html {% block html_attributes %}{% endblock %}>
+    <head>
+        {% block meta_tags %}
+            <meta charset="UTF-8" />
+            <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" media="screen, projection"/>
+            <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% endblock %}
+        <title>{% block title %}Welcome!{% endblock %}</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('homepage') }}">You see me</a>
+            </div>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('job_board_index') }}">ANNONCES</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                DECONNEXION
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% else %}
+                <div class="navbar-form text-center">
+                    {% block login %}{% endblock %}
+                </div>
+            {% endif %}
+        </nav>
+        <div class="container" style="margin-bottom: 10px">
+            {% block toolbar %}
+            {% endblock %}
+        </div>
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

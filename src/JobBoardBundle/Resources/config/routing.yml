@@ -2,6 +2,20 @@ job_board_index:
     path:     /
     defaults: { _controller: JobBoardBundle:Default:index }
 
-job_board_create:
-    path:     /new
-    defaults: { _controller: JobBoardBundle:Default:Create }
+job_board_edit:
+    path:     /edit/{id}
+    defaults: { _controller: JobBoardBundle:Default:edit }
+    requirements:
+        id: '\d+'
+
+job_board_view:
+    path:     /advert/{id}
+    defaults: { _controller: JobBoardBundle:Default:view }
+    requirements:
+        id: '\d+'
+
+job_board_apply:
+    path:     /apply/{id}
+    defaults: { _controller: JobBoardBundle:Default:apply }
+    requirements:
+        id: '\d+'

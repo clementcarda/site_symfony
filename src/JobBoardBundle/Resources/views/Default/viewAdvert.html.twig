@@ -1,0 +1,26 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block toolbar %}
+    {% if advert.autor.id == user.id %}
+        <a href="{{ path('job_board_edit', {'id': advert.id}) }}">edit</a>
+    {% else %}
+        <a href="{{ path('job_board_apply', {'id': advert.id}) }}">Postuler</a>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ advert.title }}</h1>
+    <div>
+        {{ advert.content }}
+    </div>
+    {% if advert.autor.id == user.id %}
+        {% if applyers|length > 0 %}
+            ont postulé :
+            <ul>
+            {% for applyer in applyers %}
+                <li>{{ applyer.username }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock %}

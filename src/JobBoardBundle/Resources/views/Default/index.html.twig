@@ -1,9 +1,18 @@
-{% extends 'AppBundle::base.html.twig' %}
+{% extends 'AppBundle::layout.html.twig' %}
+
+
+{% block toolbar %}
+    {{ form_start(searchform) }}
+    {{ form_widget(searchform) }}
+    {{ form_end(searchform) }}
+
+    <a href="{{ path('job_board_edit', {'id': 0}) }}">Créer une annonce</a>
+{% endblock %}
 
 {% block body %}
     {% for advert in adverts %}
         <p>
-        {{ advert.creationDate|date('d-m-Y') }} : {{ advert.title }} by {{ advert.autor.username }}
+            {{ advert.creationDate|date('d-m-Y') }} : <a href="{{ path('job_board_view', {'id': advert.id}) }}"> {{ advert.title }} </a> by {{ advert.autor.username }}
         </p>
     {% endfor %}
 {% endblock %}

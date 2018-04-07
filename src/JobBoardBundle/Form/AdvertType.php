@@ -26,7 +26,9 @@ class AdvertType extends AbstractType
         $builder->add('title')
             ->add('content')
             ->add('keyWords', ChoiceType::class, array(
-                'choices' => $skills
+                'choices' => $skills,
+                'multiple' => true,
+                'expanded' => true
                 ))
             ->add('Submit', SubmitType::class);
     }

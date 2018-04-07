@@ -10,4 +10,7 @@ namespace JobBoardBundle\Repository;
  */
 class AdvertRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByKeyWords($keyWords = null){
+
+    }
 }
