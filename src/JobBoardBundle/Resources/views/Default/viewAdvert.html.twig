@@ -3,7 +3,7 @@
 {% block toolbar %}
     {% if advert.autor.id == user.id %}
         <a href="{{ path('job_board_edit', {'id': advert.id}) }}">edit</a>
-    {% else %}
+    {% elseif can_apply %}
         <a href="{{ path('job_board_apply', {'id': advert.id}) }}">Postuler</a>
     {% endif %}
 {% endblock %}
@@ -18,9 +18,11 @@
             ont postulé :
             <ul>
             {% for applyer in applyers %}
-                <li>{{ applyer.username }}</li>
+                <li><a href="{{ path('show_othercv', {'userId': applyer.id}) }}">{{ applyer.username }}</a></li>
             {% endfor %}
             </ul>
+        {% else %}
+            personne n'a postulé
         {% endif %}
     {% endif %}
 {% endblock %}

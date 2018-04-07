@@ -32,6 +32,13 @@ class User extends BaseUser
     private $applying;
 
     /**
+     * @var \JobBoardBundle\Entity\InfoCV
+     *
+     * @ORM\OneToOne(targetEntity="JobBoardBundle\Entity\InfoCV", mappedBy="auteur")
+     */
+    private $cv;
+
+    /**
      * get id
      *
      *@return integer
@@ -98,5 +105,26 @@ class User extends BaseUser
      */
     public function removeApply(\JobBoardBundle\Entity\Advert $advert){
         $this->applying->removeElement($advert);
+    }
+
+    /**
+     * Set cv
+     *
+     * @param \JobBoardBundle\Entity\InfoCV $cv
+     *
+     * @return User
+     */
+    public function setCv($cv){
+        $this->cv = $cv;
+        return $this;
+    }
+
+    /**
+     * Get cv
+     *
+     * @return \JobBoardBundle\Entity\InfoCV
+     */
+    public function getCv(){
+        return $this->cv;
     }
 }

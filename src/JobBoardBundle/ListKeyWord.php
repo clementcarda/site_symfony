@@ -11,5 +11,9 @@ namespace JobBoardBundle;
 
 class ListKeyWord
 {
-    public static $skills = array("PHP" => "php", "Java" => "java", "nodeJS" => "nodejs");
+    public static $skills = array(
+        "PHP" => "php",
+        "Java" => "java",
+        "nodeJS" => "nodejs"
+    );
 }

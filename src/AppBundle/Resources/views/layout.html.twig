@@ -22,6 +22,11 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
+                            <a href="{{ path('show_mycv') }}">
+                                {{ app.user.username }}
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ path('fos_user_security_logout') }}">
                                 DECONNEXION
                             </a>

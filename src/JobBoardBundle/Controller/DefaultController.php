@@ -107,6 +107,14 @@ class DefaultController extends Controller
         $user = $this->getUser();
         $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id);
         $applyers = $advert->getApplyers();
+
+        $can_apply = true;
+        foreach ($applyers as $applyer){
+            if($applyer == $user){
+                $can_apply = false;
+            }
+        }
+
         if (!$advert){
             throw $this->createNotFoundException(
                 'Aucune annonce pour cet Identifiant '.$id
@@ -116,7 +124,8 @@ class DefaultController extends Controller
         return $this->render('JobBoardBundle:Default:viewAdvert.html.twig', array(
             'advert' => $advert,
             'user' => $user,
-            'applyers' => $applyers
+            'applyers' => $applyers,
+            'can_apply' => $can_apply
         ));
     }
 

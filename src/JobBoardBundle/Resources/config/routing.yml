@@ -19,3 +19,28 @@ job_board_apply:
     defaults: { _controller: JobBoardBundle:Default:apply }
     requirements:
         id: '\d+'
+
+show_mycv:
+    path:     /cv
+    defaults: { _controller: JobBoardBundle:CVController:showCv }
+show_othercv:
+    path:     /cv/user/{userId}
+    defaults: { _controller: JobBoardBundle:CVController:showCv }
+edit_cv:
+    path:     /cv/edit
+    defaults: { _controller: JobBoardBundle:CVController:editCv }
+edit_formation:
+    path: /cv/edit/formation/{id}
+    defaults: { _controller: JobBoardBundle:CVController:editFormation }
+    requirements:
+        id: '\d+'
+edit_competence:
+    path: /cv/edit/competence/{id}
+    defaults: { _controller: JobBoardBundle:CVController:editCompetence }
+    requirements:
+        id: '\d+'
+edit_experience:
+    path: /cv/edit/experience/{id}
+    defaults: { _controller: JobBoardBundle:CVController:editExperience }
+    requirements:
+        id: '\d+'
