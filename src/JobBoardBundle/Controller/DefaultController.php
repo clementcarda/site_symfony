@@ -143,4 +143,13 @@ class DefaultController extends Controller
         return $this->redirectToRoute('job_board_index');
     }
 
+    public function deleteAction(Request $request, $id){
+        $em = $this->getDoctrine()->getManager();
+        $advert = $em->getRepository('JobBoardBundle:Advert')->find($id);
+        $em->remove($advert);
+        $em->flush();
+
+        return $this->redirectToRoute('job_board_index');
+    }
+
 }
